@@ -3,17 +3,47 @@
   <head>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
   </head>
   <body>
-    <a-scene background="color: #ECECEC">
-        <a-assets>
-          <a-asset-item id="bench-obj" src="https://cdn.glitch.global/766e9afe-c63f-4454-8df4-ccd8609d8ec0/Bench%20N111021.obj?v=1684346204050"></a-asset-item>
-          <a-asset-item id="bench-mtl" src="https://cdn.glitch.global/766e9afe-c63f-4454-8df4-ccd8609d8ec0/Bench%20N111021.mtl?v=1684344219284"></a-asset-item>
-        </a-assets>
-        <a-entity obj-model="obj: #bench-obj;" scale="0.01 0.01 0.01" position="0 -20 -30"></a-entity>
+    <a-scene background="color: #999b9A">
+      <a-plane color="#E1E0DC" width="20" height="20" position="0 0 -20">
+       <a-text color="#ff0000" scale="5 5 5" position="-8 8 0" value="Jornal dos Tigres"></a-text>
+       <a-plane color="#990000" width="3" height="5" position="-7 4 1"\
+        animation__1="property: position; to: 0 0 8; startEvents: mouseenter"
+        animation__2="property: position; to: -7 4 1; startEvents: mouseleave;dur: 400;easing: easeOutCubic">
+        <a-circle color="#bb6540" position="0 1 0.1">
+        <a-animation attribute="position" begin="mouseenter" dur="300" to="0 0 18"></a-animation>
+       </a-plane>
 
-        <a-gltf-model src="https://cdn.glitch.global/766e9afe-c63f-4454-8df4-ccd8609d8ec0/kid.glb?v=1684457386053" scale="3 3 3" position="0 -15 -30"></a-gltf-model>
-      
-      </a-scene>
+       <a-plane color="#700040" width="3" height="5" position="-7 -4 1"\
+        animation__1="property: position; to: 0 0 8; startEvents: mouseenter"
+        animation__2="property: position; to: -7 -4 1; startEvents: mouseleave;dur: 400;easing: linear">
+        <a-circle color="#bb6540" position="0 1 0.1">
+        <a-animation attribute="position" begin="mouseenter" dur="300" to="0 0 18"></a-animation>
+       </a-plane>
+
+       <a-plane color="#402000" width="3" height="5" position="0 4 1"\
+        animation__1="property: position; to: 0 0 8; startEvents: mouseenter"
+        animation__2="property: position; to: 0 4 1; startEvents: mouseleave;dur: 400;easing: easeOutCirc">
+        <a-circle color="#bb6540" position="0 1 0.1">
+        <a-animation attribute="position" begin="mouseenter" dur="300" to="0 0 18"></a-animation>
+       </a-plane>
+       </a-circle>
+      </a-plane>
+
+
+      <a-camera>
+        <a-entity
+        raycaster="interval: 1000;"
+        cursor="fuse: true;"
+        material="color: black; shader: flat"
+        position="0 0 -10"
+        geometry="primitive: ring"></a-entity>
+      </a-camera>
+    </a-scene>
   </body>
 </html>
+<!-- animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
+animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" -->
