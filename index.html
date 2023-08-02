@@ -4,41 +4,57 @@
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
   </head>
   <body>
     <a-scene background="color: #999b9A">
-      <a-plane color="#E1E0DC" width="20" height="20" position="0 0 -20">
-       <a-text color="#ff0000" scale="5 5 5" position="-8 8 0" value="Jornal dos Tigres"></a-text>
-       <a-plane color="#990000" width="3" height="5" position="-7 4 1"\
-        animation__1="property: position; to: 0 0 8; startEvents: mouseenter"
-        animation__2="property: position; to: -7 4 1; startEvents: mouseleave;dur: 400;easing: easeOutCubic">
-        <a-circle color="#bb6540" position="0 1 0.1">
+      <a-image src="assets/journal.jpg" width="20" height="20" position="0 -10 -40" rotation="-90 0 0"
+      animation__abrirJornal="property: rotation; to: 0 0 0; startEvents: click"
+      animation__aproximarJornal="property: position; to: 0 0 -20; startEvents: click;easing: easeOutCubic"
+      opacity="0.8"
+      >       
+      <a-text 
+       scale="5 5 5" position="-8 9 0"
+       value="Jornal dos Tigres"
+       font="assets/UnifrakturMaguntia-Regular-msdf.json"
+       color="#000000"
+       negate="false">
+       </a-text>
+       <a-plane color="#990000" width="3" height="5" position="-7 4 0.1"
+        animation__1="property: position; to: 0 0 8; startEvents: click"
+        animation__2="property: position; to: -7 4 0.1; startEvents: fusing;dur: 400;easing: easeOutCubic">
+        <a-circle color="#bb6540" position="0 1 0.1"> </a-circle>
         <a-animation attribute="position" begin="mouseenter" dur="300" to="0 0 18"></a-animation>
        </a-plane>
 
-       <a-plane color="#700040" width="3" height="5" position="-7 -4 1"\
-        animation__1="property: position; to: 0 0 8; startEvents: mouseenter"
-        animation__2="property: position; to: -7 -4 1; startEvents: mouseleave;dur: 400;easing: linear">
-        <a-circle color="#bb6540" position="0 1 0.1">
+       <a-plane color="#700040" width="3" height="5" position="-7 -4 0.1"\
+        animation__1="property: position; to: 0 0 8; startEvents: click"
+        animation__2="property: position; to: -7 -4 0.1; startEvents: fusing;dur: 400;easing: linear">
+        <a-circle color="#bb6540" position="0 1 0.1"> </a-circle>
         <a-animation attribute="position" begin="mouseenter" dur="300" to="0 0 18"></a-animation>
        </a-plane>
 
-       <a-plane color="#402000" width="3" height="5" position="0 4 1"\
-        animation__1="property: position; to: 0 0 8; startEvents: mouseenter"
-        animation__2="property: position; to: 0 4 1; startEvents: mouseleave;dur: 400;easing: easeOutCirc">
-        <a-circle color="#bb6540" position="0 1 0.1">
-        <a-animation attribute="position" begin="mouseenter" dur="300" to="0 0 18"></a-animation>
-       </a-plane>
-       </a-circle>
-      </a-plane>
+       <a-image src="assets/CarlinhosGrande.png" width="3" height="5" position="0 4 0.1"\
+        animation__crescerPosicao="property: position; to: 0 0 8; startEvents: click"
+        animation__crescerTamanho="property: scale; to: 10 10 10; startEvents: click; dur:5000"
+        animation__2="property: position; to: 0 4 0.1; startEvents: fusing;dur: 400;easing: easeOutCirc">
+       </a-image>
+      <!-- <a-entity gltf-model="url(assets/carlinhos3D.glb)" position="0 0 0.1" scale="10 10 10"></a-entity> -->
 
+      </a-image>
+      
 
       <a-camera>
         <a-entity
+        animation__click="property: components.material.material.color; type: color; to: blue; startEvents: click; easing: easeInCubic; dur: 150;"
+        animation__fusing="property: components.material.material.color; type: color; to: red; startEvents: fusing; easing: easeInCubic; dur: 500;"
         raycaster="interval: 1000;"
         cursor="fuse: true;"
         material="color: black; shader: flat"
         position="0 0 -10"
+        scale="0.1 0.1 0"
         geometry="primitive: ring"></a-entity>
       </a-camera>
     </a-scene>
