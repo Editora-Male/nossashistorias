@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
   </head>
   <body>
-    <a-scene background="color: #999b9A">
-      <a-image src="assets/image/jornalFundo.jpeg" width="20" height="20" position="0 -10 -40" rotation="-90 0 0"
+    <a-scene background="color: #EEEFD4">
+      <a-image src="assets/image/Layout Jornal 3.png" width="20" height="20" position="0 -10 -40" rotation="-90 0 0"
       animation__abrirJornal="property: rotation; to: 0 0 0; startEvents: click"
       animation__aproximarJornal="property: position; to: 0 0 -20; startEvents: click;easing: easeOutCubic"
       sound="src: url(assets/sound/openJournal.mp3); on: click"
@@ -19,24 +19,24 @@
       
       <!-- <a-plane background="color:#fff" width="8" height="1.5" position="0 8.7 0.01"></a-plane>        -->
       <!-- <a-text 
-       scale="5 5 5" position="-6 9 0.1"
+       scale="5 5 5" position="0 0 0.5"
        value="Jornal dos Tigres"
        font="assets/UnifrakturMaguntia-Regular-msdf.json"
        color="#000000"
        negate="false">
        </a-text> -->
 
-       <a-image src="assets/image/capaMarDeMarielle.png" width="5.7" height="3.5" position="0 -2.7 0.1"
+       <!-- <a-image src="assets/image/capaMarDeMarielle.png" width="5.7" height="3.5" position="0 -2.7 0.1"
         animation__1="property: position; to: 0 0 8; startEvents: click"
         animation__2="property: position; to: 0 -2.7 0.1; startEvents: fusing;dur: 400;easing: easeOutCirc"
         animation__crescerTamanho="property: scale; to: 2 2 1; startEvents: click; dur:400">
         <a-animation attribute="position" begin="mouseenter" dur="300" to="0 0 18"></a-animation>
-       </a-image>
+       </a-image> -->
 
-       <a-image src="assets/image/CarlinhosGrande.png" width="3" height="3.4" position="6 5 0.1"
+       <a-image src="assets/image/Carlinhos grande sem fundo.png" width="12" height="7.5" position="-3 4.2 0.1"
         animation__crescerPosicao="property: position; to: 0 0 8; startEvents: click"
-        animation__crescerTamanho="property: scale; to: 10 10 10; startEvents: click; dur:5000"
-        animation__2="property: position; to: 6 5 0.1; startEvents: fusing;dur: 400;easing: easeOutCirc">
+        animation__crescerTamanho="property: scale; to: 10 10 10; startEvents: click; dur:10000"
+        animation__2="property: position; to: -3 4.2 0.1; startEvents: fusing;dur: 400;easing: easeOutCirc">
        </a-image>
       <!-- <a-entity gltf-model="url(assets/carlinhos3D.glb)" position="0 0 0.1" scale="10 10 10"></a-entity> -->
 
@@ -49,10 +49,11 @@
         animation__fusing="property: components.material.material.color; type: color; to: red; startEvents: fusing; easing: easeInCubic; dur: 500;"
         raycaster="interval: 1000;"
         cursor="fuse: true;"
-        material="color: black; shader: flat"
-        position="0 0 -10"
-        scale="0.1 0.1 0"
+        material="shader: flat; color: black"
+        position="0 0 -1"
+        scale="0.01 0.01 0"
         geometry="primitive: ring"></a-entity>
+
       </a-camera>
     </a-scene>
   </body>
