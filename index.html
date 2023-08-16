@@ -4,12 +4,67 @@
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-proxy-event-component/dist/aframe-proxy-event-component.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
   </head>
   <body>
     <a-scene background="color: #EEEFD4">
+      <!-- Começo do jornal deitado que levanta e depois para abre para a leitura ou já sobre abrindo -->
+      <a-image src="assets/image/LayoutJornal3.png" width="20" height="20" position="0 0 -20"
+      animation__abrirJornal="property: rotation; to: 0 0 0; startEvents: click"
+      animation__aproximarJornal="property: position; to: 0 0 -20; startEvents: click;easing: easeOutCubic"
+      sound="src: url(assets/sound/openJournal.mp3); on: click"
+      opacity="0.8"
+      >
+      
+      <!-- <a-plane background="color:#fff" width="8" height="1.5" position="0 8.7 0.01"></a-plane>        -->
+      <!-- <a-text 
+       scale="5 5 5" position="0 0 0.5"
+       value="Jornal dos Tigres"
+       font="assets/UnifrakturMaguntia-Regular-msdf.json"
+       color="#000000"
+       negate="false">
+       </a-text> -->
+
+       <!-- <a-image src="assets/image/capaMarDeMarielle.png" width="5.7" height="3.5" position="0 -2.7 0.1"
+        animation__1="property: position; to: 0 0 8; startEvents: click"
+        animation__2="property: position; to: 0 -2.7 0.1; startEvents: fusing;dur: 400;easing: easeOutCirc"
+        animation__crescerTamanho="property: scale; to: 2 2 1; startEvents: click; dur:400">
+        <a-animation attribute="position" begin="mouseenter" dur="300" to="0 0 18"></a-animation>
+       </a-image> -->
+
+       <a-image src="assets/image/CarlinhosGrandesemfundo.png" width="12" height="7.5" position="-3 4.2 0.1"
+        animation__crescerPosicao="property: position; to: 0 0 8; startEvents: click"
+        animation__crescerTamanho="property: scale; to: 10 10 10; startEvents: click; dur:10000"
+        animation__2="property: position; to: -3 4.2 0.1; startEvents: mouseleave;dur: 1000;easing: easeOutCirc"
+        animation__3="property: scale; to: 1 1 1; startEvents: mouseleave;dur: 1000;easing: easeOutCirc">
+      </a-image>
+      <!-- <a-entity gltf-model="url(assets/carlinhos3D.glb)" position="0 0 0.1" scale="10 10 10"></a-entity> -->
+
+      </a-image>
+      <a-entity position="-10 0 -19" id="linhaGuia" line__2="start: -10 -10 0; end: -10 10 0; color: green" rotation="0 180 0"
+        animation__abrirJornalCapa="property: rotation; to: 0 0 0;dur: 5000;startEvents: paginaClicada;easing: easeOutCubic"
+
+      >
+        <a-image side="front" src="assets/image/RealidadeAumentada/JornaldosTigres_capa.png" 
+          proxy-event__abrirJornal="event: click; to: #linhaGuia; as:paginaClicada" width="20" height="20" rotation="0 180 0"
+          sound="src: url(assets/sound/openJournal.mp3); on: click"
+          position="-10 0 -0.1"
+        >
+        </a-image>
+        <a-image src="assets/image/contraCapaJornal.jpeg" 
+        proxy-event__abrirJornal="event: click; to: #linhaGuia; as:paginaClicada" width="20" height="20"
+        sound="src: url(assets/sound/openJournal.mp3); on: click"
+        position="-10 0 0"
+        >
+        </a-image>
+      </a-entity>
+     
+      <!-- Fim jornal que começa em pé e depois apenas abre a página -->
+
+      <!-- Começo do jornal deitado que levanta e depois para abre para a leitura ou já sobre abrindo -->
       <a-image src="assets/image/LayoutJornal3.png" width="20" height="20" position="0 -10 -40" rotation="-90 0 0"
       animation__abrirJornal="property: rotation; to: 0 0 0; startEvents: click"
       animation__aproximarJornal="property: position; to: 0 0 -20; startEvents: click;easing: easeOutCubic"
@@ -41,6 +96,13 @@
       </a-image>
       <!-- <a-entity gltf-model="url(assets/carlinhos3D.glb)" position="0 0 0.1" scale="10 10 10"></a-entity> -->
 
+      </a-image>
+
+      <a-image src="assets/image/RealidadeAumentada/JornaldosTigres_capa.png" width="20" height="20" position="0 -10 -40" rotation="-90 0 0"
+      animation__abrirJornal="property: rotation; to: 0 0 0; startEvents: click"
+      animation__aproximarJornal="property: position; to: 0 0 -20; startEvents: click;easing: easeOutCubic"
+      sound="src: url(assets/sound/openJournal.mp3); on: click"
+      >
       </a-image>
       
 
