@@ -1,0 +1,5 @@
+- Atualizar o layout do fundo da expiência para a arte nova -> feito
+- Colocar a imagem de um olho fechado para animar de acordo com a interação ->
+- Adicionar fontes e textos para auxiliar na compreensão da experiência -> 
+- Alterar o fundo do projeto para a cor do jornal -> feito
+- Atualizar o carlinhos para ficar grande -> feito
