@@ -13,9 +13,10 @@
     <a-scene background="color: #EEEFD4">
       <a-assets>
         <a-asset-item id="eye" src="assets/models/cursor_eye.glb"></a-asset-item>
-        <a-asset-item id="eyeobj" src="assets/models/eye.obj"></a-asset-item>
+        <a-asset-item id="eyeobj" src="assets/models/OlhoAberto.obj"></a-asset-item>
+        <a-asset-item id="eyeobjclosed" src="assets/models/OlhoFechadoCorrigido.obj"></a-asset-item>
       </a-assets>    
-      <a-image class="collidable" src="assets/image/LayoutJornal8.png" width="20" height="20" position="0 0 -20"
+      <a-image src="assets/image/LayoutJornal8.png" width="20" height="20" position="0 0 -20"
       animation__abrirJornal="property: rotation; to: 0 0 0; startEvents: click"
       animation__aproximarJornal="property: position; to: 0 0 -20; startEvents: click;easing: easeOutCubic"
       sound="src: url(assets/sound/openJournal.mp3); on: click"
@@ -48,7 +49,7 @@
       <!-- <a-entity gltf-model="url(assets/carlinhos3D.glb)" position="0 0 0.1" scale="10 10 10"></a-entity> -->
 
       </a-image>
-      <a-entity class="collidable" position="-10 0 -19" id="linhaGuia" line__2="start: -10 -10 0; end: -10 10 0; color: green" rotation="0 180 0"
+      <a-entity position="-10 0 -19.9" id="linhaGuia" line__2="start: -10 -10 0; end: -10 10 0; color: green" rotation="0 180 0"
         animation__abrirJornalCapa="property: rotation; to: 0 0 0;dur: 5000;startEvents: paginaClicada;easing: easeOutCubic"
       >
         <a-image class="collidable" side="front" src="assets/image/RealidadeAumentada/JornaldosTigres_capa.png" 
@@ -57,26 +58,38 @@
           position="-10 0 -0.1"
         >
         </a-image>
-        <a-image class="collidable" src="assets/image/contraCapaJornal.jpeg" 
+        <a-image src="assets/image/contraCapaDesfocada.jpeg" 
         proxy-event__abrirJornal="event: click; to: #linhaGuia; as:paginaClicada" width="20" height="20"
         sound="src: url(assets/sound/openJournal.mp3); on: click"
         position="-10 0 0"
         >
         </a-image>
       </a-entity>
-
+      <!-- <a-entity id="cursoEye" material="shader: flat; color: black"
+      obj-model="obj:#eyeobj;"
+      position="-10 0 -15"
+      rotation="0 180 0"
+      animation__click="property: components.material.material.color; type: color; to: blue; startEvents: paginaClicada; easing: easeInCubic; dur: 150;"
+      animation__fusing="property: components.material.material.color; type: color; to: red; startEvents: paginaFusing; easing: easeInCubic; dur: 500;"
+      ></a-entity> -->
       
 
       <a-camera>
         <a-entity
         proxy-event__click="event: click; to: #cursoEye; as:paginaClicada"
         proxy-event__fusing="event: fusing; to: #cursoEye; as:paginaFusing"
+        proxy-event__intersection="event: raycaster-intersection-cleared; to: #cursoEye; as:noIntersection"
+        proxy-event__intersect="event: raycaster-intersection; to: #cursoEye; as:intersect"
         cursor="fuse: true;"
+        raycaster="objects: .collidable"
         > 
         <a-entity id="cursoEye" material="shader: flat; color: black"
-        obj-model="obj:#eyeobj;" rotation="0 -90 0"
-        position="0 0 -3"
+        obj-model="obj:#eyeobj;"
+        position="-2 -2 -18"
+        rotation="0 180 0"
         scale="0.1 0.1 0.1"
+        event-set__eyeopen="_event: intersect; obj-model.obj: #eyeobj"
+        event-set__eyeclosed="_event: noIntersection; obj-model.obj: #eyeobjclosed"
         animation__click="property: components.material.material.color; type: color; to: blue; startEvents: paginaClicada; easing: easeInCubic; dur: 150;"
         animation__fusing="property: components.material.material.color; type: color; to: red; startEvents: paginaFusing; easing: easeInCubic; dur: 500;"
         ></a-entity>
