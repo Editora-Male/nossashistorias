@@ -1,6 +1,5 @@
- - Atualizar imagem da manchete para arte de carlinhos pequeno
- - Modificar o cursor de interação
- - Adicionar textos de ajuda para interação na experiência
- - Criar a versão de jornal deitado e abrindo
- - Criar a versão de jornal em pé e abrindo
- - Adicionar botões de redirecionamento da página
+ - Atualizar imagem da manchete para arte de carlinhos pequeno - feito
+ - Modificar o cursor de interação - feito
+ - Adicionar textos de ajuda para interação na experiência - 
+ - Criar a versão de jornal em pé e abrindo - feito
+ - Adicionar botões de redirecionamento da página - 

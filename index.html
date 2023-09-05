@@ -8,6 +8,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <script>
+      AFRAME.registerComponent('redirect', {
+        schema: {
+          page: {default: 'https://www.editoramale.com.br/'}
+        },
+    
+        init: function () {
+          var data = this.data;
+          var el = this.el;
+    
+          el.addEventListener('click', function () {
+            window.open("https://www.editoramale.com.br", '_blank');
+          });
+        }
+      });
+    </script>
   </head>
   <body>
     <a-scene background="color: #EEEFD4">
@@ -16,40 +32,31 @@
         <a-asset-item id="eyeobj" src="assets/models/OlhoAberto.obj"></a-asset-item>
         <a-asset-item id="eyeobjclosed" src="assets/models/OlhoFechadoCorrigido.obj"></a-asset-item>
       </a-assets>    
-      <a-image src="assets/image/LayoutJornal8.png" width="20" height="20" position="0 0 -20"
+      <a-image src="assets/image/LayoutJornal.png" width="20" height="20" position="0 0 -20"
       animation__abrirJornal="property: rotation; to: 0 0 0; startEvents: click"
       animation__aproximarJornal="property: position; to: 0 0 -20; startEvents: click;easing: easeOutCubic"
       sound="src: url(assets/sound/openJournal.mp3); on: click"
       opacity="0.8"
       >
-      
-      <!-- <a-plane background="color:#fff" width="8" height="1.5" position="0 8.7 0.01"></a-plane>        -->
-      <!-- <a-text 
-       scale="5 5 5" position="0 0 0.5"
-       value="Jornal dos Tigres"
-       font="assets/UnifrakturMaguntia-Regular-msdf.json"
-       color="#000000"
-       negate="false">
-       </a-text> -->
+        <a-image class="collidable" src="assets/image/CarlinhosGrandesemfundo.png" width="12" height="7.5" position="-3 4.2 0.1" visible="false"
+            animation__crescerPosicao="property: position; to: 0 0 8; startEvents: click"
+            animation__crescerTamanho="property: scale; to: 10 10 10; startEvents: click; dur:10000"
+            animation__aparecer="property: visible; to: true; startEvents: click; dur:100"
+            animation__2="property: position; to: -3 4.2 0.1; startEvents: mouseleave;dur: 1000;easing: easeOutCirc"
+            animation__3="property: scale; to: 1 1 1; startEvents: mouseleave;dur: 1000;easing: easeOutCirc">
+          </a-image>
+          <a-image class="collidable" src="assets/image/MardeMarielle_capa.png" opacity="1" 
+            width="5.4" height="2.7" position="6 1 0.2" visible="false"
+            redirect="page: `https://www.editoramale.com.br/product-page/orikis-sarau-das-pretas`">
+          </a-image>
 
-       <!-- <a-image src="assets/image/capaMarDeMarielle.png" width="5.7" height="3.5" position="0 -2.7 0.1"
-        animation__1="property: position; to: 0 0 8; startEvents: click"
-        animation__2="property: position; to: 0 -2.7 0.1; startEvents: fusing;dur: 400;easing: easeOutCirc"
-        animation__crescerTamanho="property: scale; to: 2 2 1; startEvents: click; dur:400">
-        <a-animation attribute="position" begin="mouseenter" dur="300" to="0 0 18"></a-animation>
-       </a-image> -->
-
-       <a-image class="collidable" src="assets/image/CarlinhosGrandesemfundo.png" width="12" height="7.5" position="-3 4.2 0.1" visible="false"
-        animation__crescerPosicao="property: position; to: 0 0 8; startEvents: click"
-        animation__crescerTamanho="property: scale; to: 10 10 10; startEvents: click; dur:10000"
-        animation__aparecer="property: visible; to: true; startEvents: click; dur:100"
-        animation__2="property: position; to: -3 4.2 0.1; startEvents: mouseleave;dur: 1000;easing: easeOutCirc"
-        animation__3="property: scale; to: 1 1 1; startEvents: mouseleave;dur: 1000;easing: easeOutCirc">
+          <a-image class="collidable" src="assets/image/CaduQuerBrincar_capa.png" opacity="1" 
+          width="11.5" height="4.9" position="-3.1 -3 0.2" visible="flase"
+          redirect="page: `https://www.editoramale.com.br/product-page/orikis-sarau-das-pretas`">
+        </a-image>
+        
       </a-image>
-      <!-- <a-entity gltf-model="url(assets/carlinhos3D.glb)" position="0 0 0.1" scale="10 10 10"></a-entity> -->
-
-      </a-image>
-      <a-entity position="-10 0 -19.9" id="linhaGuia" line__2="start: -10 -10 0; end: -10 10 0; color: green" rotation="0 180 0"
+      <a-entity position="-10 0 -19.9" id="linhaGuia" rotation="0 180 0"
         animation__abrirJornalCapa="property: rotation; to: 0 0 0;dur: 5000;startEvents: paginaClicada;easing: easeOutCubic"
       >
         <a-image class="collidable" side="front" src="assets/image/RealidadeAumentada/JornaldosTigres_capa.png" 
@@ -58,21 +65,13 @@
           position="-10 0 -0.1"
         >
         </a-image>
-        <a-image src="assets/image/contraCapaDesfocada.jpeg" 
+        <a-image src="assets/image/LayoutJornalContracapa.png" 
         proxy-event__abrirJornal="event: click; to: #linhaGuia; as:paginaClicada" width="20" height="20"
         sound="src: url(assets/sound/openJournal.mp3); on: click"
         position="-10 0 0"
         >
         </a-image>
       </a-entity>
-      <!-- <a-entity id="cursoEye" material="shader: flat; color: black"
-      obj-model="obj:#eyeobj;"
-      position="-10 0 -15"
-      rotation="0 180 0"
-      animation__click="property: components.material.material.color; type: color; to: blue; startEvents: paginaClicada; easing: easeInCubic; dur: 150;"
-      animation__fusing="property: components.material.material.color; type: color; to: red; startEvents: paginaFusing; easing: easeInCubic; dur: 500;"
-      ></a-entity> -->
-      
 
       <a-camera>
         <a-entity
@@ -85,7 +84,7 @@
         > 
         <a-entity id="cursoEye" material="shader: flat; color: black"
         obj-model="obj:#eyeobj;"
-        position="-2 -2 -18"
+        position="0 0 -18"
         rotation="0 180 0"
         scale="0.1 0.1 0.1"
         event-set__eyeopen="_event: intersect; obj-model.obj: #eyeobj"
@@ -93,7 +92,12 @@
         animation__click="property: components.material.material.color; type: color; to: blue; startEvents: paginaClicada; easing: easeInCubic; dur: 150;"
         animation__fusing="property: components.material.material.color; type: color; to: red; startEvents: paginaFusing; easing: easeInCubic; dur: 500;"
         ></a-entity>
-
+        <a-text 
+          scale="0.3 0.3 0.3" position="0.1 -0.7 -1"
+          font="assets/fonts/IMFellDWPica-Italic-msdf.json"
+          color="#000000"
+          negate="false">
+        </a-text>
       </a-entity>
 
       </a-camera>
@@ -103,5 +107,3 @@
 <!-- animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
 animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
 animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1" -->
-
-
