@@ -19,7 +19,23 @@
           var el = this.el;
     
           el.addEventListener('click', function () {
-            window.open("https://www.editoramale.com.br", '_blank');
+            window.open('https://www.editoramale.com.br/loja?Categoria=mal%C3%AA+mirim');
+          });
+        }
+      });
+    </script>
+    <script>
+      AFRAME.registerComponent('ativarbotao', {
+        schema: {
+          page: {default: 'https://www.editoramale.com.br/'}
+        },
+        init: function () {
+          var data = this.data;
+          var el = this.el;
+    
+          el.addEventListener('animationcomplete__crescerTamanho', function () {
+            console.log("teste");
+            el.emit(`aparecer-botao`, null, false);
           });
         }
       });
@@ -31,30 +47,51 @@
         <a-asset-item id="eye" src="assets/models/cursor_eye.glb"></a-asset-item>
         <a-asset-item id="eyeobj" src="assets/models/OlhoAberto.obj"></a-asset-item>
         <a-asset-item id="eyeobjclosed" src="assets/models/OlhoFechadoCorrigido.obj"></a-asset-item>
-      </a-assets>    
+      </a-assets>
       <a-image src="assets/image/LayoutJornal.png" width="20" height="20" position="0 0 -20"
       animation__abrirJornal="property: rotation; to: 0 0 0; startEvents: click"
       animation__aproximarJornal="property: position; to: 0 0 -20; startEvents: click;easing: easeOutCubic"
       sound="src: url(assets/sound/openJournal.mp3); on: click"
       opacity="0.8"
       >
-        <a-image class="collidable" src="assets/image/CarlinhosGrandesemfundo.png" width="12" height="7.5" position="-3 4.2 0.1" visible="false"
+      <a-plane 
+        width="15" height="6" class="collidable"
+        proxy-event__fecharCapas="event: click; to: .capas; as:jornalReset"
+        id="botaoMarDeMarielle" color="#fbe133" position="0 10 0.1" visible="false">
+          <a-image scale="2 1 1" position="0 0 0.1" src="assets/image/logoMale.webp"></a-image>
+      </a-plane>
+        <a-image class="collidable" src="assets/image/carlinhosadulto_jornaldostigres_semfundo.png" width="12" height="6.5" position="-3 3.2 0.1" visible="false"
             animation__crescerPosicao="property: position; to: 0 0 8; startEvents: click"
-            animation__crescerTamanho="property: scale; to: 10 10 10; startEvents: click; dur:10000"
+            animation__crescerTamanho="property: scale; to: 8 8 8; startEvents: click; dur:10000"
             animation__aparecer="property: visible; to: true; startEvents: click; dur:100"
             animation__2="property: position; to: -3 4.2 0.1; startEvents: mouseleave;dur: 1000;easing: easeOutCirc"
-            animation__3="property: scale; to: 1 1 1; startEvents: mouseleave;dur: 1000;easing: easeOutCirc">
+            animation__3="property: scale; to: 1 1 1; startEvents: mouseleave;dur: 1000;easing: easeOutCirc"
+            animation__desaparecer="property: visible; to: false; startEvents: mouseleave;dur: 500;easing: easeOutCirc">
           </a-image>
-          <a-image class="collidable" src="assets/image/MardeMarielle_capa.png" opacity="1" 
+          <a-image class="collidable capas" src="assets/image/MardeMarielle_capa.png" opacity="1" 
             width="5.4" height="2.7" position="6 1 0.2" visible="false"
-            redirect="page: `https://www.editoramale.com.br/product-page/orikis-sarau-das-pretas`">
+            animation__crescerPosicao="property: position; to: 0 0 8; startEvents: click"
+            animation__crescerTamanho="property: scale; to: 3 3 3; startEvents: click; dur:7000"
+            animation__aparecer="property: visible; to: true; startEvents: click; dur:100"
+            animation__2="property: position; to: 6 1 0.2; startEvents: jornalReset;dur: 1000;easing: easeOutCirc"
+            animation__3="property: scale; to: 1 1 1; startEvents: jornalReset;dur: 1000;easing: easeOutCirc"
+            animation__desaparecer="property: visible; to: false; startEvents: jornalReset;dur: 500;easing: easeOutCirc">
+            <a-plane class="collidable" id="botaoMarDeMarielle" redirect="page: 'https://www.editoramale.com.br/loja?Categoria=mal%C3%AA+mirim'" color="#fbe133" position="0 -2 0.1" height="1" width="5"><a-image scale="2 1 1" position="0 0 0.1" src="assets/image/logoMale.webp"></a-image></a-plane>
           </a-image>
 
-          <a-image class="collidable" src="assets/image/CaduQuerBrincar_capa.png" opacity="1" 
-          width="11.5" height="4.9" position="-3.1 -3 0.2" visible="flase"
-          redirect="page: `https://www.editoramale.com.br/product-page/orikis-sarau-das-pretas`">
+          <a-image class="collidable capas" src="assets/image/CaduQuerBrincar_capa.png"  opacity="1" 
+          ativarbotao="page: `https://www.editoramale.com.br/product-page/orikis-sarau-das-pretas`"
+          width="11.5" height="4.9" position="-3.1 -3 0.2" visible="false"
+          animation__crescerPosicao="property: position; to: 0 0 8; startEvents: click"
+          animation__crescerTamanho="property: scale; to: 2 2 2; startEvents: click; dur:7000"
+          animation__aparecer="property: visible; to: true; startEvents: click; dur:100"
+          animation__2="property: position; to: -3.1 -3 0.2; startEvents: jornalReset;dur: 1000;easing: easeOutCirc"
+          animation__3="property: scale; to: 1 1 1; startEvents: jornalReset;dur: 1000;easing: easeOutCirc"
+          animation__desaparecer="property: visible; to: false; startEvents: jornalReset;dur: 500;easing: easeOutCirc">
+          <a-plane class="collidable" id="botaoMarDeMarielle" redirect="page: 'https://www.editoramale.com.br/loja?Categoria=mal%C3%AA+mirim'" color="#fbe133" position="0 -3 0.1" height="1" width="11"><a-image scale="2 1 1" position="0 0 0.1" src="assets/image/logoMale.webp"></a-image></a-plane>
         </a-image>
-        
+        <!-- redirect="page: `https://www.editoramale.com.br/product-page/orikis-sarau-das-pretas`" -->
+ 
       </a-image>
       <a-entity position="-10 0 -19.9" id="linhaGuia" rotation="0 180 0"
         animation__abrirJornalCapa="property: rotation; to: 0 0 0;dur: 5000;startEvents: paginaClicada;easing: easeOutCubic"
@@ -80,13 +117,13 @@
         proxy-event__intersection="event: raycaster-intersection-cleared; to: #cursoEye; as:noIntersection"
         proxy-event__intersect="event: raycaster-intersection; to: #cursoEye; as:intersect"
         cursor="fuse: true;"
-        raycaster="objects: .collidable"
+        raycaster="interval:10;objects: .collidable;showLine: true; far: 100; lineColor: red; lineOpacity: 0.5"
         > 
         <a-entity id="cursoEye" material="shader: flat; color: black"
         obj-model="obj:#eyeobj;"
-        position="0 0 -18"
+        position="-1 0 -8"
         rotation="0 180 0"
-        scale="0.1 0.1 0.1"
+        scale="0.05 0.05 0.05"
         event-set__eyeopen="_event: intersect; obj-model.obj: #eyeobj"
         event-set__eyeclosed="_event: noIntersection; obj-model.obj: #eyeobjclosed"
         animation__click="property: components.material.material.color; type: color; to: blue; startEvents: paginaClicada; easing: easeInCubic; dur: 150;"
@@ -95,6 +132,7 @@
         <a-text 
           scale="0.3 0.3 0.3" position="0.1 -0.7 -1"
           font="assets/fonts/IMFellDWPica-Italic-msdf.json"
+          value="Extra!Extra! Coloque o olho nas manchetes, você vai se surpreender!"
           color="#000000"
           negate="false">
         </a-text>
